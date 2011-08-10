@@ -1,0 +1,54 @@
+<html>
+ <head>
+
+ <style>
+.problem { width: 10%; float: left; border-bottom: 1px solid black;  margin: 7%; margin-top: 8%; margin-bottom: 10%; padding-bottom: 0px;}
+.px { text-align: right; clear: both; float: right; }
+.py { text-align: right; float: right; }
+body { width: 8in; height: 10in; font-size: 140%; }
+
+
+ </style>
+
+
+ <script src="https://www.google.com/jsapi" type="text/javascript"> </script>
+
+  <script type="text/javascript">
+google.load("jquery", "1.5.2");
+  </script>
+
+    <script type="text/javascript">
+var problemtype = "x";
+var random = function(max, min){
+    return Math.floor(Math.random()*(max-min)) + min;
+};
+
+var randomDigits = function(max, min, digits){
+};
+
+var generateProblem = function(){
+    var x = random(200,5);
+    var y = random(200,5);
+
+    if(Math.min(x,y) == x){
+        return {'x': y, 'op':problemtype, 'y': x };
+    }else{
+        return {'x': x, 'op':problemtype, 'y': y };
+    }
+};
+
+
+$(document).ready( function() {
+    for(var i = 0; i < 20; i++){
+        var p = generateProblem();
+        $('body').append("<div class='problem'><span class='px'>" + p.x + "</span><br />" +
+            "<span class='op'>" + p.op + "</span>" +
+            "<span class='py'>" + p.y + "</span></div>");
+    }
+    
+});
+
+    </script>
+ </head>
+ <body></body>
+</html>
